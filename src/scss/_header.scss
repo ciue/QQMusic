@@ -1,0 +1,29 @@
+.header{
+    height: $header-height;
+    background-color:  $header-background;
+    h1{
+        display: none;
+    }
+    .logo {
+        float: left;
+        display: block;
+        margin:9px 0 0 9px; 
+        height: $logo-height;
+        width: $logo-width;
+        background-image: url(../imgs/logo.png);
+        background-size: cover;
+        background-repeat: none;
+        text-indent: 100%;
+        overflow: hidden;
+    }
+    .btn-download{
+        float: right;
+        margin: 9px 9px 0 0;
+        padding: 0 12px;
+        line-height: 28px;
+        font-size: 14px;
+        border-radius: 99px;
+        color: #ffffff;
+        background-color: $header-btn-background;
+    }
+}

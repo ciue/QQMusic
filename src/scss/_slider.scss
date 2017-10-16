@@ -1,0 +1,19 @@
+.slider {
+    width: 100%;
+    overflow: hidden;
+    .slider-wrap {
+        transition-duration:  500ms;
+        display: flex;
+        width: 500%;
+    }
+    .item{
+        flex-basis: 100%;
+        >a{
+            // display: block;
+            img{
+                display: block;
+                width: 100%; 
+            }
+        }
+    }
+}
