@@ -30,8 +30,6 @@ export class Slider {
             this.index = 0
         } else(this.index += 1);
         let x = `-${this.index * 100 / this.data.length}%`
-
         this.wrap.style.transform = `translateX(${x})`
-        console.log(x)
     }
 }

@@ -1,0 +1,76 @@
+* {
+  box-sizing: border-box; }
+
+body, div, h1, h2, h3, h4, h5, ul, li {
+  margin: 0;
+  padding: 0; }
+
+a {
+  text-decoration: none;
+  color: #000000; }
+
+ul li {
+  list-style: none; }
+
+.header {
+  height: 44px;
+  background-color: #31c27c; }
+  .header h1 {
+    display: none; }
+  .header .logo {
+    float: left;
+    display: block;
+    margin: 9px 0 0 9px;
+    height: 25px;
+    width: 90px;
+    background-image: url(imgs/logo.png);
+    background-size: cover;
+    background-repeat: none;
+    text-indent: 100%;
+    overflow: hidden; }
+  .header .btn-download {
+    float: right;
+    margin: 9px 9px 0 0;
+    padding: 0 12px;
+    line-height: 28px;
+    font-size: 14px;
+    border-radius: 99px;
+    color: #ffffff;
+    background-color: #149c5a; }
+
+.nav {
+  height: 40px;
+  display: flex; }
+  .nav a {
+    flex: 1;
+    line-height: 40px;
+    font-size: 16px;
+    color: rgba(0, 0, 0, 0.6);
+    text-align: center; }
+  .nav .current {
+    color: #31c27c; }
+  .nav .current:after {
+    content: "";
+    display: block;
+    border-bottom: 2px solid #31c27c; }
+
+.slider {
+  width: 100%;
+  overflow: hidden; }
+  .slider .slider-wrap {
+    transition-duration: 500ms;
+    display: flex;
+    width: 500%; }
+  .slider .item {
+    flex-basis: 100%; }
+    .slider .item > a img {
+      display: block;
+      width: 100%; }
+
+.container > div {
+  display: none; }
+
+.container .current {
+  display: block; }
+
+/*# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJhcHAtZDUxZDY5LmNzcyIsInNvdXJjZVJvb3QiOiIifQ==*/

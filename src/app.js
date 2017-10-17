@@ -1,7 +1,6 @@
 import './scss/app.scss';
-import {
-    Slider
-} from './scripts/slider.js';
+import { Slider } from './scripts/slider.js';
+import { TabSwitch } from './scripts/tab.js';
 
 new Slider({
     el: document.querySelector('#slider'),
@@ -26,4 +25,9 @@ new Slider({
             img: require('./imgs/5-zl.jpg')
         },
     ]
+})
+
+new TabSwitch({
+    tab: document.querySelectorAll('.rev-view'),
+    container: document.querySelectorAll('.container')
 })

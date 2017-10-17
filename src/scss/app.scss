@@ -4,3 +4,12 @@
 @import "header";
 @import "nav";
 @import "slider";
+
+.container{
+    >div{
+        display: none;
+    }
+    .current{
+        display: block;
+    }
+}
