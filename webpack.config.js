@@ -4,6 +4,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
 const webpack = require('webpack');
 
+
 // plugins
 const cleanDist = new CleanWebpackPlugin(['./dist'])
 const extractSass = new ExtractTextPlugin({
@@ -60,12 +61,12 @@ module.exports = {
         new webpack.HotModuleReplacementPlugin(),
         cleanDist,
         extractSass,
-        htmlwebpack
+        htmlwebpack,
     ],
 
     devtool: 'inline-source-map',
     devServer: {
         contentBase: './dist',
-        hot: true
-    },
+        hot: true,
+    }
 }

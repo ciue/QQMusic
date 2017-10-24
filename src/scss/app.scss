@@ -3,7 +3,10 @@
 @import "rec";
 @import "header";
 @import "nav";
-@import "slider";
+
+body{
+    background-color: #f4f4f4
+}
 
 .container{
     >div{

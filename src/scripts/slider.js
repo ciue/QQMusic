@@ -9,15 +9,16 @@ export class Slider {
     }
 
     render() {
+        let data = this.data
         this.el.innerHTML = ' <ul class="slider-wrap"> </ul> ';
         this.wrap = this.el.firstElementChild;
         this.wrap.style.width = `${this.data.length * 100}%`;
 
-        this.wrap.innerHTML = this.data.map(slide =>
+        this.wrap.innerHTML = data.map(data =>
             `<li class="item">
-                <a href="${slide.link}">
-                <img src="${slide.img}" alt=""></a>
-            </li>`
+                    <a href="${data.link}">
+                    <img src="${data.image}" alt=""></a>
+                </li>`
         ).join(``)
     }
 
