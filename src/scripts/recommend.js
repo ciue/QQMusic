@@ -1,9 +1,6 @@
-import {
-    RECOMMEND_URL
-} from './API.js'
-import {
-    Slider
-} from './slider.js'
+import { RECOMMEND_URL } from './API.js'
+import { Slider } from './slider.js'
+import { SongList } from './songList.js'
 
 export class Recommend {
     constructor(el) {
@@ -18,9 +15,9 @@ export class Recommend {
             .then(() => this.render())
     }
     render() {
-        console.log(this.data)
         this.sliderRender(this.data.slider)
         this.radioRender(this.data.radioList)
+        this.songListRender(this.data.songList)
     }
     sliderRender(data) {
         let url = data.map(slide => ({
@@ -50,4 +47,15 @@ export class Recommend {
         ).join(``)
     }
 
+    songListRender(data) {
+        let url = data.map( list => ({
+            desc: list.songListDesc,
+            image: list.picUrl.replace('http://', 'https://'),
+            id: list.id
+        }))
+        new SongList({
+            el: this.wrap.querySelector('#song-list'),
+            data: url
+        })
+    }
 }

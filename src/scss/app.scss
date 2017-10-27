@@ -3,16 +3,16 @@
 @import "rec";
 @import "header";
 @import "nav";
-
-body{
-    background-color: #f4f4f4
+body {
+    background-color: #f4f4f4;
 }
 
-.container{
-    >div{
+.container {
+    >div {
         display: none;
     }
-    .current{
+    .current {
         display: block;
     }
 }
+

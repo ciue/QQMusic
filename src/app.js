@@ -8,3 +8,5 @@ new TabSwitch({
 })
 
 new Recommend(document.querySelector('#rec-view'))
+
+

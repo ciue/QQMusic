@@ -23,7 +23,7 @@
     margin-left: 10px;
     margin-right: 10px;
     .title {
-        font-size: 16px;
+        font-size: $tit-size;
         color: #000;
         margin-bottom: 11px;
     }
@@ -40,17 +40,57 @@
                 }
             }
             .list-info {
-                padding: 0 7px 5px;
+                padding: $list-padding;
                 color: #000;
                 background-color: #ffffff;
                 h3 {
                     height: 36px;
                     line-height: 18px;
-                    font-size: 14px;
+                    font-size: $list-size;
                     white-space: normal;
                     word-wrap: break-word;
                 }
             }
+        }
+    }
+}
+
+.song-list {
+    margin-bottom: 7px;
+    margin-left: 10px;
+    margin-right: 10px;
+    .title {
+        font-size: $tit-size;
+        color: #000;
+        margin-bottom: 11px;
+    }
+    .list-wrap {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        .list-item {
+            flex-basis: 49%;
+            margin-bottom: 10px;
+            .list-desc {
+                font-size: $list-size;
+                padding: $list-padding;
+                color: #000;
+                background-color: #ffffff;
+            }
+            img {
+                width: 100%;
+            }
+        }
+    }
+    .list-more {
+        text-align: center;
+        line-height: 40px;
+        height: 40px;
+        font-size: $list-size;
+        a {
+            padding: 0 10px;
+            font-size: $list-size;
+            color: rgba(0, 0, 0, .6);
         }
     }
 }
