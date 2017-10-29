@@ -1,4 +1,5 @@
 import { TOPLIST_URL } from './API.js'
+import { LazyLoad } from './lazyload.js'
 
 export class Ranking {
     constructor( el ) {
@@ -14,12 +15,11 @@ export class Ranking {
     }
 
     render() {
-        console.log(this.el.querySelector('.ranking-list'))
         this.el.querySelector('.ranking-list').innerHTML = this.data.map ( data => 
             `<li class="ranking-item">
                 <div class="main">
                     <a href="#" >
-                        <img src="${data.picUrl.replace('http://', 'https://')}" data-url="${data.picUrl.replace('http://', 'https://')}">
+                        <img class="lazyload" src="#" data-url="${data.picUrl.replace('http://', 'https://')}">
                         <span class="count">${(data.listenCount/1000).toFixed(1)}万</span>
                     </a>
                 </div>
@@ -29,6 +29,10 @@ export class Ranking {
                 </div>
             </li>`   
         ).join('')
+
+        
+            new LazyLoad( this.el.querySelectorAll('img'))
+        
     }
 
     songName( list ){

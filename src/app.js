@@ -13,3 +13,7 @@ new Recommend(document.querySelector('#rec-view'))
 new Ranking(document.querySelector('#ranking-view'))
 
 
+
+
+
+

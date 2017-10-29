@@ -12,8 +12,8 @@
         width: $logo-width;
         background-image: url(../imgs/logo.png);
         background-size: cover;
-        background-repeat: none;
-        text-indent: 100%;
+        background-repeat: no-repeat;
+        text-indent: -100%;
         overflow: hidden;
     }
     .btn-download{
