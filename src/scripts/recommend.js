@@ -1,6 +1,5 @@
 import { RECOMMEND_URL } from './API.js'
 import { Slider } from './slider.js'
-import { SongList } from './songList.js'
 
 export class Recommend {
     constructor(el) {
@@ -31,16 +30,15 @@ export class Recommend {
         })
     }
     radioRender(data) {
-        var radioList = this.wrap.querySelector('#radio-list')
-        radioList.innerHTML = data.map(data =>
-            `<li class="list-main">
+        this.wrap.querySelector('#radio-list').innerHTML = data.map(data =>
+            `<li class="list-item">
                 <a href="javascript:;" class="listmain">
                     <div class="list-media">
                         <img src=${data.picUrl}>
                         <span></span>
                     </div>
-                    <div class="list-info">
-                        <h3>${data.Ftitle}</h3>
+                    <div class="list-desc">
+                        <h3 class="list-title">${data.Ftitle}</h3>
                     </div>
                 </a>
             </li>`
@@ -48,14 +46,17 @@ export class Recommend {
     }
 
     songListRender(data) {
-        let url = data.map( list => ({
-            desc: list.songListDesc,
-            image: list.picUrl.replace('http://', 'https://'),
-            id: list.id
-        }))
-        new SongList({
-            el: this.wrap.querySelector('#song-list'),
-            data: url
-        })
+        this.wrap.querySelector('#list-wrap').innerHTML = data.map ( data => 
+            `<li class="list-item">
+                <div class="list-media">
+                    <a href="https://y.qq.com/n/yqq/playlist/${data.id}.html">
+                        <img src="${data.picUrl.replace('http://', 'https://')}" alt="#">
+                    </a>
+                </div>
+                <div class="list-desc">
+                <h4 class="list-title">${data.songListDesc}</h4>
+                </div>
+            </li>`
+        ).join(``)
     }
 }

@@ -18,32 +18,33 @@
     }
 }
 
-.radio {
+.radio, .song-list {
     margin-bottom: 7px;
     margin-left: 10px;
-    margin-right: 10px;
     .title {
         font-size: $tit-size;
         color: #000;
         margin-bottom: 11px;
     }
-    .radio-list {
+    .list {
         display: flex;
-        justify-content: space-between;
-        .list-main {
-            flex-basis: 49%;
+        flex-wrap: wrap;
+        .list-item {
+            flex: 1;
+            flex-basis: 40%;
+            margin-right: 8px;
             margin-bottom: 10px;
+            background-color: #ffffff;
             .list-media {
-                background-color: #ffffff;
+                position: relative;
                 img {
                     width: 100%;
                 }
             }
-            .list-info {
+            .list-desc {
                 padding: $list-padding;
                 color: #000;
-                background-color: #ffffff;
-                h3 {
+                .list-title {
                     height: 36px;
                     line-height: 18px;
                     font-size: $list-size;
@@ -55,42 +56,15 @@
     }
 }
 
-.song-list {
-    margin-bottom: 7px;
-    margin-left: 10px;
-    margin-right: 10px;
-    .title {
-        font-size: $tit-size;
-        color: #000;
-        margin-bottom: 11px;
-    }
-    .list-wrap {
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: space-between;
-        .list-item {
-            flex-basis: 49%;
-            margin-bottom: 10px;
-            .list-desc {
-                font-size: $list-size;
-                padding: $list-padding;
-                color: #000;
-                background-color: #ffffff;
-            }
-            img {
-                width: 100%;
-            }
-        }
-    }
     .list-more {
         text-align: center;
         line-height: 40px;
         height: 40px;
         font-size: $list-size;
         a {
+            display: block;
             padding: 0 10px;
             font-size: $list-size;
             color: rgba(0, 0, 0, .6);
         }
     }
-}

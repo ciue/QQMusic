@@ -31,7 +31,7 @@ export class Ranking {
         ).join('')
 
         
-            new LazyLoad( this.el.querySelectorAll('img'))
+            new LazyLoad( this.el.querySelectorAll('.ranking-list img'))
         
     }
 

@@ -1,11 +1,23 @@
 export class LazyLoad {
     constructor(el) {
         this.el = el
-        window.addEventListener('scroll', () => {
-            this.checkShow()
-        })
+        this.pre
+        this.timer
+        window.addEventListener('scroll', () => this.throttle(this.checkShow, this, 300))
+        window.dispatchEvent(new Event('scroll'))
     }
-    // TODO  throttle
+
+    throttle(fn, context, delay) {
+        let cur = +new Date()
+        let diff = cur - this.pre
+        if (!this.pre || diff >= delay) {
+            fn.call(context)
+            this.pre = cur
+        } else if (this.pre && diff < delay) {
+            clearTimeout(this.timer)
+            this.timer = setTimeout(() => fn.call(context), delay)
+        }
+    }
 
     checkShow() {
         console.log(new Date())
@@ -19,7 +31,12 @@ export class LazyLoad {
     }
 
     isVisible(img) {
-        let {top,left,right,bottom} = img.getBoundingClientRect()
+        let {
+            top,
+            left,
+            right,
+            bottom
+        } = img.getBoundingClientRect()
         let vpWidth = document.documentElement.clientWidth
         let vpHeight = document.documentElement.clientHeight
         return (
