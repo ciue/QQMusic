@@ -4,7 +4,7 @@ export class LazyLoad {
         this.pre
         this.timer
         window.addEventListener('scroll', () => this.throttle(this.checkShow, this, 300))
-        window.dispatchEvent(new Event('scroll'))
+        // window.dispatchEvent(new Event('scroll'))
     }
 
     throttle(fn, context, delay) {
@@ -20,7 +20,7 @@ export class LazyLoad {
     }
 
     checkShow() {
-        console.log(new Date())
+        // console.log(new Date())
         this.imgs = [].slice.call(document.querySelectorAll('.lazyload'))
         this.imgs.map(img => {
             if (this.isVisible(img)) {

@@ -2,7 +2,7 @@ import { TOPLIST_URL } from './API.js'
 import { LazyLoad } from './lazyload.js'
 
 export class Ranking {
-    constructor( el ) {
+    constructor(el) {
         this.el = el
         this.getData()
     }
@@ -15,7 +15,7 @@ export class Ranking {
     }
 
     render() {
-        this.el.querySelector('.ranking-list').innerHTML = this.data.map ( data => 
+        this.el.querySelector('.ranking-list').innerHTML = this.data.map(data =>
             `<li class="ranking-item">
                 <div class="main">
                     <a href="#" >
@@ -27,16 +27,14 @@ export class Ranking {
                     <h3>${data.topTitle}</h3>
                     ${this.songName(data.songList)}
                 </div>
-            </li>`   
+            </li>`
         ).join('')
+        new LazyLoad(this.el.querySelectorAll('.ranking-list img'))
 
-        
-            new LazyLoad( this.el.querySelectorAll('.ranking-list img'))
-        
     }
 
-    songName( list ){
-        return list.map( (data,i) => 
+    songName(list) {
+        return list.map((data, i) =>
             `<p>
             <i>${i + 1}</i>
             <span>${data.songname}</span><i>- ${data.singername}</i>
