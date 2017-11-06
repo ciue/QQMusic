@@ -39,20 +39,27 @@ export class Search {
             .then(json => {
                 this.page = json.data.semantic.curpage
                 this.nomore = (json.message === 'no results')
-                return json.data.song.list
+                return json.data
             })
-            .then(songs => this.render(songs))
+            .then(data => this.render(data))
             .then( () =>this.isload = false)
             .catch(() =>this.isload = false)
     }
 
     render(data) {
-        this.songs.innerHTML += data.map(song =>
+        this.songs.innerHTML += data.song.list.map(song =>
             `<li class="song-item">
-            <i class="icon icon-music"></i>
-            <div class="song-name">${song.songname}</div>
-            <div class="song-artist">${song.singer.map( singer => singer.name).join('')}</div>
-         </li>`).join('')
+            <i class="icon"></i>
+            <h6 class="song-name">${song.songname}</h6>
+            <p class="song-artist">${song.singer.map( singer => singer.name).join('')}</p>
+         </li>`).join('');
+        // this.songs.innerHTML += data.zhida.map(data =>
+        //     `<li class="song-singer">
+        //     <img src="https://y.gtimg.cn/music/photo_new/T001R68x68M000${data.singermid}.jpg?max_age=2592000"
+        //     <h6 class="song-name">${data.singername}</h6>
+        //     <p><span>单曲：${data.songnum}</span><span>专辑：${data.albumnum}</span><p>
+        //  </li>`).join('');
+
     }
 
     reset() {
