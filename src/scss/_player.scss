@@ -1,0 +1,149 @@
+.container .player-view {
+    display: block;
+}
+
+.player-view {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    transition: 0.3s;
+    transform: translateY(-100%);
+    overflow: hidden;
+    opacity: 0;
+    z-index: 999;
+    background-color: rgba(0, 0, 0, .5);
+    .player-header {
+        position: relative;
+        padding: 15px;
+        display: flex;
+        align-content: center;
+        background-color: rgba($color: #000000, $alpha: .1);
+        .album-cover {
+            display: block;
+            width: 80px;
+            height: 80px;
+            border: 1px solid grey;
+        }
+        .song-info {
+            flex: 1;
+            display: -ms-flexbox;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            margin-left: 15px;
+            max-width: calc(100% - 150px);
+            .song-name {
+                font-size: 18px;
+                color: #ffffff;
+            }
+            .singer-name {
+                font-size: 14px;
+                color: #ffffff;
+            }
+        }
+        .icon-player {
+            background-image: url(../imgs/icon_play.png);
+            background-repeat: no-repeat;
+            background-size: cover;
+            position: absolute;
+            top: 50%;
+            right: 25px;
+            width: 43px;
+            height: 43px;
+            margin-top: -22px;
+            border-radius: 999px;
+            opacity: .6;
+        }
+    }
+    .lyric {
+        display: flex;
+        margin: 36px 0 60px 0;
+        height: 336px;
+        justify-content: center;
+        align-content: center;
+        .lyric-wrap {
+            min-height: 150px;
+        }
+    }
+    .footer {
+        position: relative;
+        .icon {
+            background-image: url(../imgs/sprite_play.png);
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-position: 8px -225px;
+            position: absolute;
+            right: 10px;
+            width: 40px;
+            height: 40px;
+            margin-top: -22px;
+            opacity: .6;
+        }
+        .progress {
+            display: flex;
+            position: absolute;
+            align-items: center;
+            top: 35px;
+            width: 100%;
+            .progress-bar {
+                flex: 1;
+                background-color: rgba($color: #000000, $alpha: .2);
+                width: 100%;
+                height: 2px;
+            }
+            .time {
+                width: 55px;
+                font-size: 12px;
+                color: #ffffff;
+                text-align: center;
+                letter-spacing: 1px;
+            }
+        }
+        .btn {
+            position: absolute;
+            top: 70px;
+            width: 100%;
+            height: 45px;
+            line-height: 45px;
+            padding: 0 55px;
+            overflow: hidden;
+            a {
+                position: relative ;
+                display: block;
+                margin: 0 auto;
+                color: #fff;
+                font-size: 20px;
+                background-color: #31c27c;
+                white-space: nowrap;
+                border-radius: 999px;
+                text-align: center;
+                &::after {
+                    content: '';
+                    position: absolute;
+                    left: 6px;
+                    top: 6px;
+                    width: 33px;
+                    height: 33px;
+                    background-image: url(../imgs/sprite_play.png);
+                    background-size: 40px 350px;
+                    background-repeat: no-repeat;
+                    background-position: 0px -300px;
+                }
+            }
+        }
+    }
+    .bg-blur {
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        z-index: 9;
+        width: 100%;
+        background-size: cover;
+        background-position: bottom center;
+        filter: blur(13px);
+        transform: scale(1.15);
+    }
+}
