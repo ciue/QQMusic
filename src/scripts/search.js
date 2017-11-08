@@ -47,12 +47,16 @@ export class Search {
     }
 
     render(data) {
-        this.songs.innerHTML += data.song.list.map(song =>
-            `<li class="song-item">
+        this.songs.innerHTML += data.song.list.map(song =>{
+            let singer = song.singer.map( singer => singer.name);
+
+            return `<li class="song-item">
+            <a href="#player?singer=${singer}&songid=${song.songid}&albummid=${song.albummid}&duration=${song.interval}">
             <i class="icon"></i>
             <h6 class="song-name">${song.songname}</h6>
-            <p class="song-artist">${song.singer.map( singer => singer.name).join('')}</p>
-         </li>`).join('');
+            <p class="song-artist">${singer}</p>
+            </a>
+         </li>`}).join('');
         // this.songs.innerHTML += data.zhida.map(data =>
         //     `<li class="song-singer">
         //     <img src="https://y.gtimg.cn/music/photo_new/T001R68x68M000${data.singermid}.jpg?max_age=2592000"
