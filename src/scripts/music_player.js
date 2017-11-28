@@ -1,5 +1,6 @@
 import {songUrl,lyricUrl,albumCoverUrl} from './playerURL.js'
 import {Progress} from './progress.js'
+import { Lyric } from './lyric.js'
 
 export class Music_player {
     constructor(el) {
@@ -7,21 +8,32 @@ export class Music_player {
         this.el.addEventListener('click', (e) => this.event(e))
         this.audio = this.createAudio()
         this.progress = new Progress(this.el.querySelector('#progress'))
+        this.lyric = new Lyric(this.el.querySelector('#lyric-text'),this.audio)
+        this.fetching = false
     }
 
-    play(opts={}){
-        log(opts)
-        let song = songUrl(opts.songid)
-        let lyric = lyricUrl(opts.lyricid)
+    play(opts = {}) {
+        let song = songUrl(opts.songid) // 歌曲链接
         let ablumCover = albumCoverUrl(opts.albummid)
         this.el.querySelector('.song-name').innerHTML = opts.songname
         this.el.querySelector('.singer-name').innerHTML = opts.singer
         this.el.querySelector('.album-cover').src = ablumCover
         this.el.querySelector('.bg-blur').style.backgroundImage = `url(${ablumCover})`
-        this.audio.src =song;
-        this.audio.play()
-        this.show()
-        this.progress.init(opts.duration)
+        if (!this.fetching) {
+            this.audio.src = song;
+            this.progress.init(opts.duration) // 传入歌曲总时长
+            fetch(lyricUrl(opts.songid))
+                .then(res => res.json())
+                .then(json => json.lyric)
+                .then(text => this.lyric.init(text))
+                .catch(() => {
+                    console.log('something wrong');
+                })
+                .then(() => this.fetching = false)
+            this.audio.play() //启动时播放
+            this.audio.volume = .3 // 调小声音 = = 
+            this.show()
+        }
     }
 
     createAudio() {
@@ -59,7 +71,7 @@ export class Music_player {
         this.audio.play()
         console.log('继续播放');
         this.progress.play()
-        // this.lyric.start()
+        this.lyric.start()
     }
 
     onPause(el) {
@@ -69,7 +81,7 @@ export class Music_player {
         this.audio.pause()
         console.log('暂停播放');
         this.progress.pause()
-        // this.lyric.start()
+        this.lyric.pause()
     }
 
     show() {

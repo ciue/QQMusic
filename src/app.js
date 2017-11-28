@@ -19,6 +19,7 @@ new Ranking(document.querySelector('#ranking-view'))
 
 new Search ( document.querySelector('#search-view'))
 
+
 let player = new Music_player ( document.querySelector('#player-view'))
 
 document.querySelector('#player').addEventListener('click',()=>{

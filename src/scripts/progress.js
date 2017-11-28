@@ -21,11 +21,10 @@ export class Progress {
     }
 
     update(elapsed) {
-        if (this.elapsedTime >= this.durationTime) this.reset()
+        if (this.elapsedTime >= this.durationTime) this.init()
         this.elapsedTime += 0.1
         this.elapsed.innerHTML = this.formatTime(this.elapsedTime)
         let translate = (this.elapsedTime / this.durationTime)*100-100
-        console.log(translate);
         this.progressLoad.style.transform = `translateX(${translate}%)`
     }
 
@@ -34,7 +33,7 @@ export class Progress {
     }
 
     play() {
-        this.intervalId = setInterval(this.updateTime.bind(this), 50)
+        this.intervalId = setInterval(this.update.bind(this), 100)
     }
 
     formatTime(time) {
