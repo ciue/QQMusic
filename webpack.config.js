@@ -1,4 +1,5 @@
 const path = require('path');
+const UglifyJSPlugin = require('uglifyjs-webpack-plugin')
 const ExtractTextPlugin = require("extract-text-webpack-plugin");
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
@@ -32,6 +33,14 @@ module.exports = {
                     use: [{
                         loader: "css-loader"
                     }, {
+                        loader:"postcss-loader",
+                        options:{
+                            plugins:[
+                                require('autoprefixer')(),
+                                require('cssnano')()
+                            ]
+                        }
+                    },{
                         loader: "sass-loader"
                     }],
                     fallback: "style-loader"
@@ -43,7 +52,7 @@ module.exports = {
                         loader: 'url-loader',
                         options: {
                             name: '[name].[ext]',
-                            limit: 4000,
+                            limit: 8192,
                             outputPath: 'imgs/'
                         }
                     },
@@ -58,7 +67,8 @@ module.exports = {
     },
 
     plugins: [
-        new webpack.HotModuleReplacementPlugin(),
+        new UglifyJSPlugin(),
+        new webpack.NoErrorsPlugin(),
         cleanDist,
         extractSass,
         htmlwebpack,
@@ -66,7 +76,7 @@ module.exports = {
 
     devtool: 'inline-source-map',
     devServer: {
-        contentBase: './dist',
-        hot: true,
+        contentBase: path.resolve(__dirname, './src'),
+        port: 3000
     }
 }
