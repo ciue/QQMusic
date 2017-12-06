@@ -10,12 +10,11 @@ export class Ranking {
     getData() {
         fetch(TOPLIST_URL)
             .then(res => res.json())
-            .then(json => this.data = json.data.topList)
-            .then(() => this.render())
+            .then(json => this.render(json.data.topList))
     }
 
-    render() {
-        this.el.querySelector('.ranking-list').innerHTML = this.data.map(data =>
+    render(data) {
+        this.el.querySelector('.ranking-list').innerHTML = data.map(data =>
             `<li class="ranking-item">
                 <div class="main">
                     <a href="#" >

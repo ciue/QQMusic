@@ -34,7 +34,7 @@ export class Recommend {
             `<li class="list-item">
                 <a href="javascript:;" class="listmain">
                     <div class="list-media">
-                        <img src=${data.picUrl}>
+                        <img src=${data.picUrl.replace('http://', 'https://')}>
                         <span></span>
                     </div>
                     <div class="list-desc">

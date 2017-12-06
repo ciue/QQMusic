@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "start": "webpack --progress --colors --watch -p",
+    "start": "webpack --progress --colors -p",
     "dev": "webpack-dev-server --open"
   },
   "license": "MIT",
