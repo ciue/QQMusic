@@ -21,16 +21,16 @@ export class Music_player {
         this.el.querySelector('.bg-blur').style.backgroundImage = `url(${ablumCover})`
         if (!this.fetching) {
             this.audio.src = song;
-            this.progress.init(opts.duration) // 传入歌曲总时长
             fetch(lyricUrl(opts.songid))
-                .then(res => res.json())
-                .then(json => json.lyric)
-                .then(text => this.lyric.init(text))
-                .catch(() => {
-                    console.log('something wrong');
-                })
-                .then(() => this.fetching = false)
+            .then(res => res.json())
+            .then(json => json.lyric)
+            .then(text => this.lyric.init(text))
+            .catch((e) => {
+                console.log(e);
+            })
+            .then(() => this.fetching = false)
             this.audio.play() //启动时播放
+            this.progress.init(opts.duration) // 传入歌曲总时长
             this.audio.volume = .3 // 调小声音 = = 
             this.show()
         }

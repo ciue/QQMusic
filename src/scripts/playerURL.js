@@ -1,5 +1,5 @@
 export function songUrl(id) {
-    return `https://ws.stream.qqmusic.qq.com/${id}.m4a?fromtag=46`
+    return `http://ws.stream.qqmusic.qq.com/${id}.m4a?fromtag=46`
 }
 
 export function lyricUrl(id) {
