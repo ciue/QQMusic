@@ -60,6 +60,17 @@ module.exports = {
                 ]
             },
             {
+                test: /\.js$/,
+                exclude: /node_modules/,
+                use: {
+                    loader: 'babel-loader',
+                    options: {
+                        presets: ['env']
+                    }
+                }
+
+            },
+            {
                 test: /\.html$/,
                 use:'html-loader'
             }
@@ -68,13 +79,12 @@ module.exports = {
 
     plugins: [
         new UglifyJSPlugin(),
-        new webpack.NoErrorsPlugin(),
         cleanDist,
         extractSass,
         htmlwebpack,
     ],
 
-    devtool: 'inline-source-map',
+    // devtool: 'inline-source-map',
     devServer: {
         contentBase: path.resolve(__dirname, './src'),
         port: 3000

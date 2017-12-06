@@ -7,11 +7,12 @@ export class TabSwitch {
 
     bind() {
         var _this = this
-        this.tabHeader.forEach(function (tab) {
-            tab.onclick = function (e) {        
+        Array.prototype.forEach.call(this.tabHeader, (tab) => {
+            tab.onclick = function (e) {
                 var target = e.target
                 var idx = Array().indexOf.call(_this.tabHeader, target)
-                _this.tabHeader.forEach(function (tabLi) {
+
+                Array.prototype.forEach.call(_this.tabHeader, (tabLi) => {
                     tabLi.classList.remove('current')
                 })
 
@@ -21,10 +22,25 @@ export class TabSwitch {
 
                 target.classList.add('current')
                 _this.tabContainer[idx].classList.add('current')
-                window.dispatchEvent( new Event('scroll') )    // 排行榜首屏懒加载           
+                window.dispatchEvent(new Event('scroll'))    // 排行榜首屏懒加载    
             }
-        });
+        })
+        // this.tabHeader.forEach(function (tab) {
+        //     tab.onclick = function (e) {        
+        //         var target = e.target
+        //         var idx = Array().indexOf.call(_this.tabHeader, target)
+        //         _this.tabHeader.forEach(function (tabLi) {
+        //             tabLi.classList.remove('current')
+        //         })
+
+        //         Array.prototype.forEach.call(_this.tabContainer, function (content) {
+        //             content.classList.remove('current')
+        //         })
+
+        //         target.classList.add('current')
+        //         _this.tabContainer[idx].classList.add('current')
+        //         window.dispatchEvent( new Event('scroll') )    // 排行榜首屏懒加载           
+        //     }
+        // });
     }
-
-
 }
