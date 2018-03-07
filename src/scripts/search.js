@@ -5,14 +5,16 @@ export class Search {
         this.el = el
         this.input = this.el.querySelector('#input')
         this.songs = this.el.querySelector('.song-list')
-        this.input.addEventListener('keyup', this.onKeyUp.bind(this))
+        this.cancel = this.el.querySelector('.cancel')
         this.keyWord
         this.page = 1
         this.curpage = 20
         this.nomore = false
         this.isload =false
-        this._onscroll = this.onscroll.bind(this)
-        window.addEventListener('scroll', this._onscroll)
+        window.addEventListener('scroll', this.onscroll.bind(this))
+        this.input.addEventListener('keyup', this.onKeyUp.bind(this))
+        this.input.addEventListener('click', () => {this.input.select() })
+        this.cancel.addEventListener('click', this.reset.bind(this))
     }
 
     onKeyUp(e) {
@@ -70,5 +72,6 @@ export class Search {
         this.page = 1
         this.curpage = 20
         this.songs.innerHTML = ''
+        this.input.value = ''
     }
 }
