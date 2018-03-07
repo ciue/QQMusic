@@ -1,2 +1,29 @@
-# qq-music
-[预览地址](https://ciue.github.io/qq-music/dist/)
+# QQMusic
+  高仿QQMusic手机页面。单页面应用,包含首页推荐、排行榜、搜索页、播放器。    
+  > ^_^ 因为接口放在了now.sh上，所以加载可能有点慢哦~   
+  > **[预览地址](https://ciue.github.io/qq-music/dist/)**
+
+## 技术栈
+ES6 + webpack + sass + async/await + fetch + jsonp
+
+## TODO
+
+- ~~tab 切换~~
+
+- ~~推荐页~~  
+|- ~~轮播~~  
+|- ~~电台~~  
+|- ~~热门歌单&图片懒加载~~
+
+- ~~排行榜页~~  
+|- ~~图片懒加载~~
+
+- ~~搜索页~~  
+|- ~~搜索结果~~
+
+- ~~播放器~~  
+|- ~~播放~~  
+|- ~~歌词~~  
+|- ~~进度条~~
+
+- 页面获取数据时的 loading 效果
