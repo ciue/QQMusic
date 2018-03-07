@@ -9,13 +9,13 @@
   white-space:nowrap;
   z-index: 999;
   // opacity: 0;
-  visibility:0;
+  visibility:hidden;
 
 }
 
 #error.show {
   // opacity: 1;
-  visibility:1;
+  visibility:visible;
   transition: all 1.2s
   
 }
