@@ -13,7 +13,10 @@ export class Music_player {
         this.fetching = false
     }
 
+
     async play(opts = {}) {
+        // 重置歌词和进度条
+        this.clear()
         let guid = Math.round(2147483647 * Math.random()) * (new Date).getUTCMilliseconds() % 1e10
         let vkey = await this.getVkey(opts.songid, guid)
         let song = songUrl(opts.songid, vkey, guid)
@@ -122,6 +125,11 @@ export class Music_player {
             .catch((e) => {
                 console.log(e);
             })
+    }
+
+    clear() {
+        this.el.querySelector('#lyric-text').innerText = ''
+        this.progress.init()
     }
 
 }
