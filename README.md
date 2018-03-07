@@ -26,4 +26,5 @@ ES6 + webpack + sass + async/await + fetch + jsonp
 |- ~~歌词~~  
 |- ~~进度条~~
 
+- ~~定制播放错误提示框~~
 - 页面获取数据时的 loading 效果
