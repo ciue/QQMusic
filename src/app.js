@@ -1,3 +1,4 @@
+import "babel-polyfill";
 import './scss/app.scss';
 import { Recommend } from './scripts/recommend.js';
 import { TabSwitch } from './scripts/tab.js';
@@ -38,3 +39,5 @@ let onHashChange = function (e) {
 
 }
 window.addEventListener('hashchange', onHashChange)
+
+

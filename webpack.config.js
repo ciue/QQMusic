@@ -1,3 +1,4 @@
+var babelpolyfill = require("babel-polyfill");
 const path = require('path');
 const UglifyJSPlugin = require('uglifyjs-webpack-plugin')
 const ExtractTextPlugin = require("extract-text-webpack-plugin");
