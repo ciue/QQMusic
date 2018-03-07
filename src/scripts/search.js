@@ -51,7 +51,7 @@ export class Search {
             let singer = song.singer.map( singer => singer.name);
 
             return `<li class="song-item">
-            <a href="#player?singer=${singer}&songname=${song.songname}&songid=${song.songid}&albummid=${song.albummid}&duration=${song.interval}">
+            <a href="#player?singer=${singer}&songname=${song.songname}&songid=${song.songmid}&lyricid=${song.songid}&albummid=${song.albummid}&duration=${song.interval}">
             <i class="icon"></i>
             <h6 class="song-name">${song.songname}</h6>
             <p class="song-artist">${singer}</p>

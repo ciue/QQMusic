@@ -1,3 +1,4 @@
+import { VKEY_URL } from './API.js'
 import {songUrl,lyricUrl,albumCoverUrl} from './playerURL.js'
 import {Progress} from './progress.js'
 import { Lyric } from './lyric.js'
@@ -12,26 +13,30 @@ export class Music_player {
         this.fetching = false
     }
 
-    play(opts = {}) {
-        let song = songUrl(opts.songid) // 歌曲链接
+    async play(opts = {}) {
+        console.log(opts);
+        let guid = Math.round(2147483647 * Math.random()) * (new Date).getUTCMilliseconds() % 1e10
+        let vkey = await this.getVkey(opts.songid,guid)
+        let song =  songUrl(opts.songid, vkey, guid)
+
         let ablumCover = albumCoverUrl(opts.albummid)
-        this.el.querySelector('.song-name').innerHTML = opts.songname
-        this.el.querySelector('.singer-name').innerHTML = opts.singer
+        this.el.querySelector('.song-name').innerHTML = decodeURI(opts.songname)
+        this.el.querySelector('.singer-name').innerHTML = decodeURI(opts.singer)
         this.el.querySelector('.album-cover').src = ablumCover
         this.el.querySelector('.bg-blur').style.backgroundImage = `url(${ablumCover})`
         if (!this.fetching) {
             this.audio.src = song;
-            fetch(lyricUrl(opts.songid))
-            .then(res => res.json())
-            .then(json => json.lyric)
-            .then(text => this.lyric.init(text))
-            .catch((e) => {
-                console.log(e);
-            })
-            .then(() => this.fetching = false)
+            fetch(lyricUrl(opts.lyricid))
+                .then(res => res.json())
+                .then(json => json.lyric)
+                .then(text => this.lyric.init(text))
+                .catch((e) => {
+                    console.log(e);
+                })
+                .then(() => this.fetching = false)
             this.audio.play() //启动时播放
             this.progress.init(opts.duration) // 传入歌曲总时长
-            this.audio.volume = .3 // 调小声音 = = 
+            this.audio.volume = .3 // 调小声音
             this.show()
         }
     }
@@ -90,4 +95,20 @@ export class Music_player {
     hide() {
         this.el.classList.remove('show')
     }
+
+    getVkey(id, guid) {
+        // jsonp 跨域
+        return new Promise((resolve, reject) => {
+            let script = document.createElement('script')
+            script.src = `https://c.y.qq.com/base/fcgi-bin/fcg_music_express_mobile3.fcg?g_tk=5381&loginUin=0&hostUin=0&format=jsonp&callback=callback&inCharset=utf8&outCharset=utf-8&notice=0&platform=yqq&needNewCode=0&cid=205361747&uin=0&songmid=${id}&filename=C400${id}.m4a&guid=${guid}`
+            document.getElementsByTagName("body")[0].appendChild(script);
+
+            window.callback = function (res) {
+                let vkey = res.data.items[0].vkey
+                resolve(vkey)
+            }
+        })
+
+    }
+
 }
