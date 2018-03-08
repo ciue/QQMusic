@@ -17,16 +17,17 @@ export class Music_player {
     async play(opts = {}) {
         // 重置歌词和进度条
         this.clear()
-        let guid = Math.round(2147483647 * Math.random()) * (new Date).getUTCMilliseconds() % 1e10
-        let vkey = await this.getVkey(opts.songid, guid)
-        let song = songUrl(opts.songid, vkey, guid)
-        this.audio.src = song;
-        this.show();
         let ablumCover = albumCoverUrl(opts.albummid)
         this.el.querySelector('.song-name').innerHTML = decodeURI(opts.songname)
         this.el.querySelector('.singer-name').innerHTML = decodeURI(opts.singer)
         this.el.querySelector('.album-cover').src = ablumCover
         this.el.querySelector('.bg-blur').style.backgroundImage = `url(${ablumCover})`
+        this.show();
+        
+        let guid = Math.round(2147483647 * Math.random()) * (new Date).getUTCMilliseconds() % 1e10
+        let vkey = await this.getVkey(opts.songid, guid)
+        let song = songUrl(opts.songid, vkey, guid)
+        this.audio.src = song;
         if (!this.fetching) {
             this.fetching = true
             this.getLyric(opts.lyricid)
